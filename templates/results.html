@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .results-table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-table th, .results-table td {
+            text-align: left;
+            padding: 12px;
+        }
+
+        .results-table th {
+            background-color: #6c7ae0;
+            color: white;
+        }
+
+        .results-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .results-table tr:hover {
+            background-color: #ddd;
+        }
+
+        .results-table th, .results-table td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .results-table tr:last-child th, .results-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table class="results-table">
+        <thead>
+            <tr>
+                <th>Phone</th>
+                <th>MCDM Score</th>
+                <th>Rank</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for phone, preference, ranking in results %}
+                <tr>
+                    <td>{{ phone }}</td>
+                    <td>{{ preference }}</td>
+                    <td>{{ ranking }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="button-container">
+        <input class="btn btn-secondary" type="button" onclick="window.location.href='/select'" value="Try Again">
+    </div>
+</body>
+</html>
